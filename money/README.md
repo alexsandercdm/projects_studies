@@ -1,16 +1,11 @@
 # playground_mockup
 
-A new Flutter project.
+Um Projeto de construção de tela como atividade da masterclass da fluterando.
 
-## Getting Started
+## Construção de tela
 
-This project is a starting point for a Flutter application.
+Este projeto é apenas a criação de uma tela baseado em um mockup definido no curso da masterclass. Aonde nosso objetivo principal era replicar usando linha de código, ao subir a pasta do projeto para sua máquina lembre-se de usar o <b>flutter pub get</b>
 
-A few resources to get you started if this is your first Flutter project:
+![Screenshot_1656299753](https://user-images.githubusercontent.com/93156435/175937635-2e70c0c7-1567-450f-83bc-f4688fbaea28.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Este projeto foi feito usando linha de código, inclusive a logo principal. Apenas a logo do google no botão de inscrição que é um png. 
