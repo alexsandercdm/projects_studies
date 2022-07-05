@@ -165,6 +165,14 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   height: 9,
                 ),
+                Container(
+                  width: 120,
+                  height: 3,
+                  decoration: const BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                ),
               ],
             ),
           ),
