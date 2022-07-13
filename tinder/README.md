@@ -1,16 +1,5 @@
-# tinder
+# Clone do Tinder
 
-A new Flutter project.
+Um novo projeto Flutter clonando a página do tinder, como projeto da masterclass do flutterando. 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Simulator Screen Shot - iPhone 13 Pro - 2022-07-12 at 22 31 49](https://user-images.githubusercontent.com/93156435/178728084-eb93093f-f853-4707-810e-5b3173a4fba2.png)
