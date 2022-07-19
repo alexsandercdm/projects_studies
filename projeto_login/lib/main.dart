@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Tela de Login',
+
       //theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       //darkTheme: ThemeData(useMaterial3: false, colorScheme: lightColorScheme),
       home: LoginPage(),
@@ -48,18 +49,22 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.all(2.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 36.0, vertical: 2.0),
             child: Column(
               children: [
                 SizedBox(
-                  height: (marginHeigh * 0.02),
+                  height: (marginHeigh * 0.1),
                 ),
                 SizedBox(
                   width: 120,
-                  child: Image.asset('assets/images/logo.png'),
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
                 SizedBox(
-                  height: (marginHeigh * 0.02),
+                  height: (marginHeigh * 0.05),
                 ),
                 Form(
                   key: _formKey,
@@ -88,10 +93,12 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       TextFormField(
                         controller: controllerSenha,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Senha',
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
+                            borderSide:
+                                BorderSide(color: Colors.purple.shade700),
+                            borderRadius: const BorderRadius.all(
                               Radius.circular(10),
                             ),
                           ),
@@ -113,12 +120,12 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Esqueci minha senha',
                       style: TextStyle(
-                          color: Colors.grey,
+                          color: Colors.purple[700],
                           decoration: TextDecoration.underline,
-                          fontSize: 10),
+                          fontSize: 14),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -136,8 +143,8 @@ class _LoginPageState extends State<LoginPage> {
                         duration: const Duration(seconds: 2),
                         width: widthButtom,
                         height: 35,
-                        decoration: const BoxDecoration(
-                            color: Colors.purple,
+                        decoration: BoxDecoration(
+                            color: Colors.purple[700],
                             borderRadius:
                                 BorderRadius.all(Radius.circular(45.0))),
                         child: Padding(
@@ -157,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 SizedBox(
-                  height: click ? (marginHeigh * 0.05) : (marginHeigh * 0.09),
+                  height: click ? (marginHeigh * 0.07) : (marginHeigh * 0.10),
                 ),
                 Container(
                   width: 90,
@@ -165,54 +172,57 @@ class _LoginPageState extends State<LoginPage> {
                   color: Colors.grey,
                 ),
                 SizedBox(
-                  height: click ? (marginHeigh * 0.05) : (marginHeigh * 0.09),
+                  height: click ? (marginHeigh * 0.07) : (marginHeigh * 0.10),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      width: 62,
-                      height: 62,
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Image.asset(
-                          'assets/images/google.png',
-                          color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: 62,
+                        height: 62,
+                        decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Image.asset(
+                            'assets/images/google.png',
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 62,
-                      height: 62,
-                      decoration: BoxDecoration(
-                          color: Colors.blueAccent,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Image.asset(
-                          'assets/images/facebook.png',
-                          color: Colors.white,
+                      Container(
+                        width: 62,
+                        height: 62,
+                        decoration: BoxDecoration(
+                            color: Colors.blueAccent,
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Image.asset(
+                            'assets/images/facebook.png',
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 62,
-                      height: 62,
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Image.asset(
-                          'assets/images/apple.png',
-                          color: Colors.white,
+                      Container(
+                        width: 62,
+                        height: 62,
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Image.asset(
+                            'assets/images/apple.png',
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: click ? (marginHeigh * 0.05) : (marginHeigh * 0.09),
@@ -221,12 +231,12 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Visibility(
-                    visible: true,
+                    visible: click,
                     child: AnimatedContainer(
                       padding: const EdgeInsets.all(16.0),
                       duration: const Duration(seconds: 1),
                       width: MediaQuery.of(context).size.width,
-                      height: click ? 50 : 0,
+                      height: 50,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(18),
                           color: Colors.red[900]),
