@@ -146,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: BoxDecoration(
                             color: Colors.purple[700],
                             borderRadius:
-                                BorderRadius.all(Radius.circular(45.0))),
+                                const BorderRadius.all(Radius.circular(45.0))),
                         child: Padding(
                           padding: const EdgeInsets.all(2.0),
                           child: Center(
