@@ -1,4 +1,4 @@
-# App Masterclass - Portfolio
+# App Masterclass - Portfólio
 
 Um projeto inicial de fixação de estudo e treino feito para a turma da masterclass do Flutterando.
 
