@@ -8,6 +8,7 @@ class MyThemeDark {
       primaryColor: const Color(0xFF055AA3),
       highlightColor: const Color(0xFFEDF4F8),
       scaffoldBackgroundColor: const Color(0xFF121517),
+      appBarTheme: const AppBarTheme(color: Color(0xFF121517)),
       cardColor: const Color(0XFFEDF4F8),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
