@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Animações",
+        "description": "Estudos sobre animações implícitas e controladas, contendo 4 exercícios e 2 estudos",
+        "iconSvg": "assets/images/icon_running.svg",
+        "listexercicio": [
+            {
+                "index": 1,
+                "description": "Exercidio 1"
+            },
+            {
+                "index": 2,
+                "description": "Exercidio 2"
+            }
+        ]
+    },
+    {
+        "title": "Leitura de Mockup",
+        "description": "Aplicação da técnica de leitura de mockup, contendo 2 exercícios",
+        "iconSvg": "assets/images/Icon-awesome-glasses.svg",
+        "listexercicio": [
+            {
+                "index": 1,
+                "description": "Exercidio 1"
+            },
+            {
+                "index": 2,
+                "description": "Exercidio 2"
+            }
+        ]
+    },
+    {
+        "title": "Playground",
+        "description": "Ambiente destinado a testes e estudos em geral",
+        "iconSvg": "assets/images/Icon-material-toys.svg",
+        "listexercicio": [
+            {
+                "index": 1,
+                "description": "Exercidio 1"
+            },
+            {
+                "index": 2,
+                "description": "Exercidio 2"
+            }
+        ]
+    }
+]

@@ -25,24 +25,24 @@ class MyThemeligth {
       textTheme: const TextTheme(
         headline1: TextStyle(
           color: Color(0xFF172026),
-          fontSize: 20,
+          fontSize: 18,
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w600,
         ),
         headline2: TextStyle(
           color: Color(0xFF172026),
-          fontSize: 16,
+          fontSize: 14,
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w600,
         ),
         bodyText1: TextStyle(
           color: Color(0xFF172026),
-          fontSize: 14,
+          fontSize: 12,
           fontFamily: 'Montserrat',
         ),
         bodyText2: TextStyle(
           color: Color(0xFF172026),
-          fontSize: 12,
+          fontSize: 10,
           fontFamily: 'Montserrat',
         ),
       ),

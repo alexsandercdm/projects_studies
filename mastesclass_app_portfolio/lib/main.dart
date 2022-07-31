@@ -5,23 +5,29 @@ import 'package:mastesclass_app_portfolio/theme/theme_dark.dart';
 import 'package:mastesclass_app_portfolio/theme/theme_ligth.dart';
 
 void main() {
-  runApp(MasterclassApp());
+  runApp(const MasterclassApp());
 }
 
 // ignore: must_be_immutable
-class MasterclassApp extends StatelessWidget {
-  bool theme;
-  MasterclassApp({
+class MasterclassApp extends StatefulWidget {
+  const MasterclassApp({
     Key? key,
-    this.theme = true,
   }) : super(key: key);
 
   @override
+  State<MasterclassApp> createState() => _MasterclassAppState();
+}
+
+class _MasterclassAppState extends State<MasterclassApp> {
+  ThemeMode? themeMode = ThemeMode.light;
+
+  @override
   Widget build(BuildContext context) {
+    debugPrint(Theme.of(context).brightness.toString());
     return MaterialApp(
-      theme: theme ? MyThemeligth().themeData() : MyThemeDark().themeData(),
+      theme: MyThemeligth().themeData(),
       darkTheme: MyThemeDark().themeData(),
-      themeMode: ThemeMode.system,
+      themeMode: themeMode,
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (context) => const SplashPage(),
