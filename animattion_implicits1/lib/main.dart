@@ -30,17 +30,42 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class ContentPage extends StatelessWidget {
+class ContentPage extends StatefulWidget {
   const ContentPage({Key? key}) : super(key: key);
 
   @override
+  State<ContentPage> createState() => _ContentPageState();
+}
+
+class _ContentPageState extends State<ContentPage> {
+  bool isClick = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      transformAlignment: Alignment.bottomRight,
-      width: 80,
-      height: 80,
-      decoration: BoxDecoration(
-          color: Colors.amber, borderRadius: BorderRadius.circular(50.0)),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: AnimatedAlign(
+        duration: const Duration(seconds: 2),
+        alignment: isClick ? Alignment.topCenter : Alignment.bottomRight,
+        child: GestureDetector(
+          child: AnimatedContainer(
+            duration: const Duration(seconds: 2),
+            margin: const EdgeInsets.all(16),
+            transformAlignment: Alignment.bottomRight,
+            width: isClick ? 160 : 80,
+            height: 80,
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.circular(isClick ? 0 : 50.0),
+            ),
+          ),
+          onTap: () {
+            setState(() {
+              isClick = !isClick;
+            });
+          },
+        ),
+      ),
     );
   }
 }
