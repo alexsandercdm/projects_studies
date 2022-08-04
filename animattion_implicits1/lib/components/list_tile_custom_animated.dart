@@ -1,75 +1,83 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class ListTileCustomAnimated extends StatefulWidget {
-  const ListTileCustomAnimated({Key? key}) : super(key: key);
+  const ListTileCustomAnimated({
+    Key? key,
+    this.isMarked = false,
+    required this.title,
+    required this.text,
+  }) : super(key: key);
+
+  final bool isMarked;
+  final String title;
+  final String text;
 
   @override
   State<ListTileCustomAnimated> createState() => _ListTileCustomAnimatedState();
 }
 
 class _ListTileCustomAnimatedState extends State<ListTileCustomAnimated> {
-  final String textExemplo = '''
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-''';
-  bool isMarked = false;
-  double _isOpacity = 0.0;
+  String? textExemplo;
+  String? _title;
+
+  bool _isMarked = false;
+  double _heigthFactor = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    textExemplo = widget.text;
+    _title = widget.title;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            GestureDetector(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 4,
-                ),
-                color: Colors.green,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('My Expanse list 1'),
-                    Icon(Icons.keyboard_arrow_down_rounded),
-                  ],
-                ),
-              ),
-            ),
-            AnimatedAlign(
-              alignment: Alignment.topCenter,
-              duration: const Duration(seconds: 1),
-              heightFactor: 0,
-              child: AnimatedContainer(
-                duration: const Duration(seconds: 1),
-                child: Column(
-                  children: [
-                    const FlutterLogo(),
-                    Text(textExemplo),
-                  ],
-                ),
-              ),
-            ),
-            GestureDetector(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 4,
-                ),
-                color: Colors.green,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text('My Expanse list 1'),
-                    Icon(Icons.keyboard_arrow_down_rounded),
-                  ],
-                ),
-              ),
-            ),
-          ],
+      decoration: const BoxDecoration(
+        border: Border(
+          top: BorderSide(
+              style: BorderStyle.solid, color: Colors.grey, width: 1),
+          bottom: BorderSide(
+              style: BorderStyle.solid, color: Colors.grey, width: 1),
         ),
+      ),
+      child: Column(
+        children: [
+          GestureDetector(
+            child: ListTile(
+              title: Text(_title!),
+              trailing: const Icon(
+                Icons.keyboard_arrow_down_rounded,
+              ),
+              onTap: () {
+                setState(() {
+                  _isMarked = !_isMarked;
+                  if (_isMarked) {
+                    _heigthFactor = 1;
+                  } else {
+                    _heigthFactor = 0;
+                  }
+                });
+              },
+            ),
+          ),
+          ClipRect(
+            child: AnimatedAlign(
+              alignment: Alignment.bottomCenter,
+              duration: const Duration(milliseconds: 400),
+              heightFactor: _heigthFactor,
+              child: Column(
+                children: [
+                  const FlutterLogo(
+                    size: 30,
+                  ),
+                  Text(textExemplo!),
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

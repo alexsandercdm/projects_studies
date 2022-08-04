@@ -9,13 +9,45 @@ class ListTileExercicioTwo extends StatefulWidget {
 }
 
 class _ListTileExercicioTwoState extends State<ListTileExercicioTwo> {
+  bool isMarked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Exercício 2'),
       ),
-      body: const ListTileCustomAnimated(),
+      body: Column(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height - 150,
+            child: ListView.builder(
+              itemCount: 20,
+              itemBuilder: (_, index) {
+                return GestureDetector(
+                  child: AnimatedAlign(
+                    duration: const Duration(milliseconds: 400),
+                    alignment:
+                        isMarked ? Alignment.topCenter : Alignment.bottomCenter,
+                    child: ListTileCustomAnimated(
+                      text: 'Title title title title $index',
+                      title: 'MyExpanded $index',
+                      isMarked: false,
+                    ),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      isMarked = !isMarked;
+                      debugPrint(isMarked.toString());
+                      setState(() {});
+                    });
+                  },
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
