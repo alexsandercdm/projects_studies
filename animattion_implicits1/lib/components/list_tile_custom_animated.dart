@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ListTileCustomAnimated extends StatefulWidget {
@@ -21,14 +23,23 @@ class _ListTileCustomAnimatedState extends State<ListTileCustomAnimated> {
   String? textExemplo;
   String? _title;
 
+  double turns = 0.0;
+  Color _color = Colors.transparent;
+
   bool _isMarked = false;
-  double _heigthFactor = 0;
+  double? _heigthFactor;
 
   @override
   void initState() {
     super.initState();
+
     textExemplo = widget.text;
     _title = widget.title;
+    _heigthFactor = 0;
+  }
+
+  void _changedRotation() {
+    setState(() => turns += 1.0 / 2.0);
   }
 
   @override
@@ -42,42 +53,61 @@ class _ListTileCustomAnimatedState extends State<ListTileCustomAnimated> {
               style: BorderStyle.solid, color: Colors.grey, width: 1),
         ),
       ),
-      child: Column(
-        children: [
-          GestureDetector(
-            child: ListTile(
-              title: Text(_title!),
-              trailing: const Icon(
-                Icons.keyboard_arrow_down_rounded,
+      child: InkWell(
+        onTap: () {
+          _changedRotation();
+          setState(() {
+            _isMarked = !_isMarked;
+            if (_isMarked) {
+              _heigthFactor = 1;
+              _color = Colors.amber;
+            } else {
+              _heigthFactor = 0;
+              _color = Colors.transparent;
+            }
+          });
+        },
+        child: Column(
+          children: [
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 100),
+              padding: const EdgeInsets.all(12),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(_title!),
+                    AnimatedRotation(
+                      turns: turns,
+                      duration: const Duration(milliseconds: 500),
+                      child: const Icon(Icons.keyboard_arrow_down_rounded),
+                    ),
+                  ],
+                ),
               ),
-              onTap: () {
-                setState(() {
-                  _isMarked = !_isMarked;
-                  if (_isMarked) {
-                    _heigthFactor = 1;
-                  } else {
-                    _heigthFactor = 0;
-                  }
-                });
-              },
             ),
-          ),
-          ClipRect(
-            child: AnimatedAlign(
-              alignment: Alignment.bottomCenter,
-              duration: const Duration(milliseconds: 400),
-              heightFactor: _heigthFactor,
-              child: Column(
-                children: [
-                  const FlutterLogo(
-                    size: 30,
+            ClipRect(
+              child: AnimatedAlign(
+                alignment: Alignment.bottomCenter,
+                duration: const Duration(milliseconds: 300),
+                heightFactor: _heigthFactor,
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      const FlutterLogo(
+                        size: 60,
+                      ),
+                      Text(textExemplo!),
+                    ],
                   ),
-                  Text(textExemplo!),
-                ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

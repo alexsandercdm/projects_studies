@@ -24,24 +24,10 @@ class _ListTileExercicioTwoState extends State<ListTileExercicioTwo> {
             child: ListView.builder(
               itemCount: 20,
               itemBuilder: (_, index) {
-                return GestureDetector(
-                  child: AnimatedAlign(
-                    duration: const Duration(milliseconds: 400),
-                    alignment:
-                        isMarked ? Alignment.topCenter : Alignment.bottomCenter,
-                    child: ListTileCustomAnimated(
-                      text: 'Title title title title $index',
-                      title: 'MyExpanded $index',
-                      isMarked: false,
-                    ),
-                  ),
-                  onTap: () {
-                    setState(() {
-                      isMarked = !isMarked;
-                      debugPrint(isMarked.toString());
-                      setState(() {});
-                    });
-                  },
+                return ListTileCustomAnimated(
+                  text: 'Title title title title $index',
+                  title: 'MyExpanded $index',
+                  isMarked: false,
                 );
               },
             ),

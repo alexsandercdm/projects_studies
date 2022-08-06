@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
                 Navigator.of(context).pushNamed('/execiciotwo');
               },
               child: const Text('Exercício 2'),
-            )
+            ),
           ],
         ),
       ),
