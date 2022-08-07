@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(3),
+            padding: const EdgeInsets.all(3),
             color: _theme!.scaffoldBackgroundColor,
             width: sizeWidth,
             height: 60,

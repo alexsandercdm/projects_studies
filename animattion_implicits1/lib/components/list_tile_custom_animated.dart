@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -24,7 +23,7 @@ class _ListTileCustomAnimatedState extends State<ListTileCustomAnimated> {
   String? _title;
 
   double turns = 0.0;
-  Color _color = Colors.transparent;
+  Color color = Colors.transparent;
 
   bool _isMarked = false;
   double? _heigthFactor;
@@ -60,10 +59,10 @@ class _ListTileCustomAnimatedState extends State<ListTileCustomAnimated> {
             _isMarked = !_isMarked;
             if (_isMarked) {
               _heigthFactor = 1;
-              _color = Colors.amber;
+              color = Colors.amber;
             } else {
               _heigthFactor = 0;
-              _color = Colors.transparent;
+              color = Colors.transparent;
             }
           });
         },
