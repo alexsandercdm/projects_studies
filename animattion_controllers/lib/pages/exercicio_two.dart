@@ -11,7 +11,9 @@ class ExercicioTwo extends StatefulWidget {
 class _ExercicioTwoState extends State<ExercicioTwo>
     with SingleTickerProviderStateMixin {
   late final AnimationController animationController;
-  late final Animation<AlignmentGeometry> align;
+  late final Animation<Alignment> align;
+
+  late ScrollController scrollController;
 
   @override
   void initState() {
@@ -20,6 +22,7 @@ class _ExercicioTwoState extends State<ExercicioTwo>
         AnimationController(duration: const Duration(seconds: 2), vsync: this);
     align = Tween(begin: Alignment.center, end: Alignment.topCenter)
         .animate(animationController);
+    scrollController = ScrollController(initialScrollOffset: 100.0);
     animationController.addListener(() {
       setState(() {});
     });
@@ -37,22 +40,17 @@ class _ExercicioTwoState extends State<ExercicioTwo>
       appBar: AppBar(
         title: const Text('Exercício 2'),
       ),
-      body: GestureDetector(
-        child: AlignTransition(
-          alignment: align,
-          child: ListView.builder(
-            itemCount: 30,
-            itemBuilder: (_, idx) {
-              return CustomMyExpandedTile(
-                title: 'MyExpanded $idx',
-                text: 'Descrição do texto $idx',
-              );
-            },
-          ),
+      body: Align(
+        child: ListView.builder(
+          controller: scrollController,
+          itemCount: 30,
+          itemBuilder: (_, idx) {
+            return CustomMyExpandedTile(
+              title: 'MyExpanded $idx',
+              text: 'Descrição do texto $idx',
+            );
+          },
         ),
-        onTap: () {
-          animationController.forward();
-        },
       ),
     );
   }
