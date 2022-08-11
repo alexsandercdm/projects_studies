@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_splash/services/prefs_service.dart';
 
 class LoginController {
   ValueNotifier<bool> inLoader = ValueNotifier<bool>(false);
@@ -15,6 +16,11 @@ class LoginController {
       const Duration(seconds: 2),
     );
     inLoader.value = false;
-    return _login == 'admin' && _pass == '123';
+    if (_login == 'admin' && _pass == '123') {
+      PrefService.save(_login!);
+      return true;
+    }
+
+    return false;
   }
 }

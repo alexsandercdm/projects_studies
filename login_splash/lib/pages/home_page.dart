@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_splash/controllers/home_controller.dart';
 import 'package:login_splash/models/post_model.dart';
 import 'package:login_splash/repossitories/home_respository_imp.dart';
+import 'package:login_splash/services/prefs_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,6 +25,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              PrefService.logout();
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/login', (_) => true);
+            },
+            icon: const Icon(Icons.logout_outlined),
+          ),
+        ],
       ),
       body: ValueListenableBuilder<List<PostModel>>(
         valueListenable: _controller.posts,
